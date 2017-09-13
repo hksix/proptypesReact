@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import {LOCATIONS} from './reducers.js'
 import Spaceship from './Spaceship.js';
 import CrewMember from './CrewMember.js';
 import BadAlien from './BadAlien.js'
@@ -16,15 +17,16 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <Planet name="earth">
-          <CrewMember name="Uhuru" rank="Comander" />
-          <CrewMember name="Kirk Crusher" rank="Ensign" />
+          <CrewMember name="Uhuru" rank="Comander" location={LOCATIONS.PLANET_EARTH} />
+          <CrewMember name="Kirk Crusher" rank="Ensign" location={LOCATIONS.PLANET_EARTH}/>
           <BadAlien name='Kahn' species="Human?" />
         </Planet>
-        
+
       <Spaceship name='Enterprise' commanderType='CrewMember'>
-        <CrewMember name="Riker" rank="Comander" />
-        <CrewMember name="Wesley Crusher" rank="Ensign" />
-        <BadAlien name='Borger' species="Borg" />
+        <CrewMember name="Riker" rank="Comander" location={LOCATIONS.TRANSPORTER_ROOM} />
+        <CrewMember name="Wesley Crusher" rank="Ensign" location={LOCATIONS.TRANSPORTER_ROOM} />
+        <CrewMember name="Picard" rank="El Captain" location={LOCATIONS.TRANSPORTER_ROOM} />
+        <BadAlien name='Borger' species="Borg" location={LOCATIONS.UNKNOWN} />
       </Spaceship>
         
       </div>

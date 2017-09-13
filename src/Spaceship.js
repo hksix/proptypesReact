@@ -34,7 +34,7 @@ class Spaceship extends Component{
         });
 
         return(
-            <div>
+            <div className='ship'>
                 <h1>{name}</h1>
                 {creaturesOnboard}
             </div>

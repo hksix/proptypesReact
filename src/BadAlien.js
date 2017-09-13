@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BadAlien = ({name, species})=>(
+const BadAlien = ({name, species, location})=>(
     <div>
-        <h2>{name} ({species})</h2>
+        <h2>{name} ({species}) Location: {location}</h2>
     </div>
 );
 

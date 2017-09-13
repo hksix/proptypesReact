@@ -33,6 +33,7 @@ class Planet extends Component{
         const peopleOnland = children.map((child, idx)=>{
             if(child.type.name ==='CrewMember'){
                 humans =  humans + 1;
+                
             }else{
                 aliens = aliens + 1;
             }
