@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Spaceship from './Spaceship.js';
+import CrewMember from './CrewMember.js';
+import BadAlien from './BadAlien.js'
+
 class App extends Component {
   render() {
     return (
@@ -10,9 +14,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Spaceship name='Enterprise'>
+        <CrewMember name="Riker" rank="Comander" />
+        <CrewMember name="Wesley Crusher" rank="Ensign" />
+        <BadAlien name='Borger' species="Borg" />
+      </Spaceship>
+        
       </div>
     );
   }
