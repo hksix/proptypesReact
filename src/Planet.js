@@ -32,9 +32,9 @@ class Planet extends Component{
         var aliens = 0
         const peopleOnland = children.map((child, idx)=>{
             if(child.type.name ==='CrewMember'){
-                humans =  humans +1;
+                humans =  humans + 1;
             }else{
-                aliens = aliens +1;
+                aliens = aliens + 1;
             }
         })
         console.log({children})
