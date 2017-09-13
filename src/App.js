@@ -5,6 +5,7 @@ import './App.css';
 import Spaceship from './Spaceship.js';
 import CrewMember from './CrewMember.js';
 import BadAlien from './BadAlien.js'
+import Planet from './Planet.js'
 
 class App extends Component {
   render() {
@@ -14,7 +15,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-      <Spaceship name='Enterprise'>
+        <Planet name="earth">
+          <CrewMember name="Uhuru" rank="Comander" />
+          <CrewMember name="Kirk Crusher" rank="Ensign" />
+          <BadAlien name='Kahn' species="Human?" />
+        </Planet>
+        
+      <Spaceship name='Enterprise' commanderType='CrewMember'>
         <CrewMember name="Riker" rank="Comander" />
         <CrewMember name="Wesley Crusher" rank="Ensign" />
         <BadAlien name='Borger' species="Borg" />
