@@ -16,7 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <Planet name="earth">
+        <Planet name="earth" mines={10}>
           <CrewMember name="Uhuru" rank="Comander" location={LOCATIONS.PLANET_EARTH} />
           <CrewMember name="Kirk Crusher" rank="Ensign" location={LOCATIONS.PLANET_EARTH}/>
           <BadAlien name='Kahn' species="Human?" />
@@ -28,9 +28,16 @@ class App extends Component {
         <CrewMember name="Picard" rank="El Captain" location={LOCATIONS.TRANSPORTER_ROOM} />
         <BadAlien name='Borger' species="Borg" location={LOCATIONS.UNKNOWN} />
       </Spaceship>
-        
+        <button onClick={this._addMember}>Add Member</button>
       </div>
     );
+  }
+  _addMember=()=>{ 
+      return(
+        <div>
+    <CrewMember name="Test" rank="NP" location={LOCATIONS.PLANET_EARTH}/>
+      </div>
+      )
   }
 }
 

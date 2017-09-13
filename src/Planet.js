@@ -15,7 +15,8 @@ class Planet extends Component{
     static propTypes = {
         name: PropTypes.string.isRequired,
         children: PropTypes.node,
-        classification: PropTypes.string.isRequired
+        classification: PropTypes.string.isRequired,
+        mines: PropTypes.number.isRequired
     };
 
     static defaultProps={
@@ -24,24 +25,14 @@ class Planet extends Component{
     render(){
         const{
             name,
+            mines,
             classification,
             children
         } = this.props;
 
-        var humans= 0
-        var aliens = 0
-        const peopleOnland = children.map((child, idx)=>{
-            if(child.type.name ==='CrewMember'){
-                humans =  humans + 1;
-                
-            }else{
-                aliens = aliens + 1;
-            }
-        })
-        console.log({children})
         return(
             <div className="onPlanet">
-                <h1 className='header'>{name.toUpperCase()} <br/> [{classification} class]</h1>
+                <h1 className='header'>{name.toUpperCase()} <br/> [{classification} class] <small>Mine count: {mines}</small></h1>
                 {children}
                 <hr/>
                 Human: {this.state.human}
@@ -49,12 +40,6 @@ class Planet extends Component{
                 Alien: {this.state.alien}
             </div>   
         )
-    }
-    __counter=(humans, aliens)=>{
-        this.setState({
-            human: humans,
-            alien: aliens
-        })
     }
 }
 

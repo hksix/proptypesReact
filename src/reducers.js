@@ -8,6 +8,35 @@ export const LOCATIONS = {
     UNKNOWN: 'UNKNOWN'
 }
 
+const planets = (state=[], action)=>{
+    switch(action.type){
+        case actions.ADD_PLANET:
+            return[
+                ...state,
+                {
+                    name: action.name,
+                    classification: action.classification,
+                    id: action.id,
+                    mines: action.mines
+                }
+            ]
+        case actions.MINE_CRYSTALS:
+            return state.map((mine)=>{
+                if(action.id === mine.id){
+                    let mined = mine.mines - 1
+                    return {
+                        ...mine,
+                        mines: mined
+                    }
+                }else{
+                    return mine
+                }
+            })
+        default:
+            return state;
+    }
+}
+
 const ships =(state=[], action) =>{
     switch(action.type){
         case actions.ADD_SHIP:
@@ -62,18 +91,23 @@ const crewMembers = (state=[], action) =>{
                 }
                 // otherwise return crewMember
             });
-                default:
-                    return state
+            
+            case actions.HOLD_LUAU:
+                return;
+            default:
+                return state
     }
 }
 
 export default combineReducers({
+    planets,
     ships,
     crewMembers,
 });
 
 
 // store.dispatch({
+//     type: ADD_SHIP,
 //     name: "dread",
 //     id: 99999,
 // })

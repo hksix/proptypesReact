@@ -20,6 +20,9 @@ window.store = store;
 window.ADD_MEMBER = actions.ADD_MEMBER;
 window.BEAM_MEMBER = actions.BEAM_MEMBER;
 window.ADD_SHIP = actions.ADD_SHIP;
+window.ADD_PLANET = actions.ADD_PLANET;
+window.MINE_CRYSTALS = actions.MINE_CRYSTALS;
+window.HOLD_LUAU = actions.HOLD_LUAU;
 
 
 window.TRANSPORTER_ROOM = LOCATIONS.TRANSPORTER_ROOM;
