@@ -33,6 +33,18 @@ const planets = (state=[], action)=>{
                     return mine
                 }
             })
+            case actions.REMOVE_CRYSTALS:
+            return state.map( (planet) => (
+              (action.id === planet.id)
+              ? { ...planet, crystals:  planet.crystals - action.howMany }
+              : planet
+            ));
+          case actions.ADD_CRYSTALS:
+            return state.map( (planet) => (
+              (action.id === planet.id)
+              ? { ...planet, crystals:  planet.crystals + action.howMany }
+              : planet
+            ));
         case actions.TRANSFER_CRYSTALS:
             return state.map( (planet)=>(
                 (action.planetId === planet.id)
@@ -43,7 +55,7 @@ const planets = (state=[], action)=>{
     }
 }
 
-const ships =(state=[], action) =>{
+const ships = (state=[], action) =>{
     switch(action.type){
         case actions.ADD_SHIP:
             return[
@@ -54,10 +66,17 @@ const ships =(state=[], action) =>{
                     crystals: 0
                 }
             ]
-        case actions.TRANSFER_CRYSTALS:
-            return state.map( (ship)=>(
-                (action.shipId === ship.id)
-                ?{...ship, crystals: ship.crystals - action.howMany}: ship
+            case actions.REMOVE_CRYSTALS:
+            return state.map( (ship) => (
+              (action.id === ship.id)
+              ? { ...ship, crystals:  ship.crystals - action.howMany }
+              : ship
+            ));
+          case actions.ADD_CRYSTALS:
+            return state.map( (ship) => (
+              (action.id === ship.id)
+              ? { ...ship, crystals:  ship.crystals + action.howMany }
+              : ship
             ));
         default:
             return state;
