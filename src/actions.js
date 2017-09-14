@@ -72,38 +72,32 @@ this is what we want to produce as an action object
     //reduce number of crystals
 }
 {
-  type: ADD_PLANET,
+const LOCATION_PLANET = 'planets'
+{
+  type: ADD_LOCATION,
+  locationType: LOCATION_PLANET
   name: 'Earth',
   id: 5432112345
 }
 {
-  type: REMOVE_CRYSTALS,
+  type: REMOVE_RESOURCE,
+  resource: 'crystals',
   howMany: 1,
   id: 1
 }
 {
-    type: REMOVE_RESOURCE,
-    resource: 'crystals',
-    howMany: 1,
-    id: 1
+  type: ADD_RESOURCE,
+  resource: 'crystals',
+  howMany: 1,
+  id: 1
 }
-{
-    type: ADD_RESOURCE,
-    resource: 'crystals',
-    howMany: 1,
-    id: 1
-}
-
 */
 
 const ADD_MEMBER = 'ADD_MEMBER';
 const BEAM_MEMBER = 'BEAM_MEMBER';
-const ADD_SHIP = 'ADD_SHIP';
-const ADD_PLANET = 'ADD_PLANET';
-const MINE_CRYSTALS = 'MINE_CRYSTALS';
-const HOLD_LUAU = 'HOLD_LUAU';
-const ADD_CRYSTALS = 'ADD_CRYSTALS';
-const REMOVE_CRYSTALS = 'REMOVE_CRYSTALS';
+const ADD_LOCATION = 'ADD_LOCATION';
+const ADD_RESOURCE = 'ADD_RESOURCE';
+const REMOVE_RESOURCE = 'REMOVE_RESOURCE';
 
 export default{
     ADD_MEMBER,
