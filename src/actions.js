@@ -1,3 +1,5 @@
+import * as constants from './Constants.js'
+
 let thingy={
     location:{
         planets:{
@@ -37,7 +39,7 @@ let thingy={
 }
 
 
-// Tip #1: Make constatns for your action type strings
+// Tip #1: Make export constatns for your action type strings
 /*
 
 this is what we want to produce as an action object
@@ -72,7 +74,7 @@ this is what we want to produce as an action object
     //reduce number of crystals
 }
 {
-const LOCATION_PLANET = 'planets'
+export const LOCATION_PLANET = 'planets'
 {
   type: ADD_LOCATION,
   locationType: LOCATION_PLANET
@@ -93,19 +95,46 @@ const LOCATION_PLANET = 'planets'
 }
 */
 
-const ADD_MEMBER = 'ADD_MEMBER';
-const BEAM_MEMBER = 'BEAM_MEMBER';
-const ADD_LOCATION = 'ADD_LOCATION';
-const ADD_RESOURCE = 'ADD_RESOURCE';
-const REMOVE_RESOURCE = 'REMOVE_RESOURCE';
 
-export default{
-    ADD_MEMBER,
-    BEAM_MEMBER,
-    ADD_SHIP,
-    ADD_PLANET,
-    MINE_CRYSTALS,
-    HOLD_LUAU,
-    ADD_CRYSTALS,
-    REMOVE_CRYSTALS,
+export const createPlanet = (store, id, name, resources)=>{
+    return{
+    type: constants.ADD_LOCATION,
+    locationType:constants.LOCATION_PLANET,
+    id: id,
+    name: name,
+    resources:resources
+    }
+}  
+export const removeResource= (resourceName,howMany, idToRemoveFrom)=>{
+    return{
+        type: constants.REMOVE_RESOURCE,
+        resource: resourceName,
+        howMany: howMany,
+        id: idToRemoveFrom,
+    }
 }
+
+export const addResource= (resourceName,howMany, idToAddFrom)=>{
+    return{
+        type: constants.ADD_RESOURCE,
+        resource: resourceName,
+        howMany: howMany,
+        id: idToAddFrom,
+    }
+}
+
+// export default{
+//     ADD_MEMBER,
+//     BEAM_MEMBER,
+//     ADD_LOCATION,
+//     ADD_RESOURCE,
+//     REMOVE_RESOURCE,
+//     createPlanet,
+
+//     // ADD_SHIP,
+//     // ADD_PLANET,
+//     // MINE_CRYSTALS,
+//     // HOLD_LUAU,
+//     // ADD_CRYSTALS,
+//     // REMOVE_CRYSTALS,
+// }

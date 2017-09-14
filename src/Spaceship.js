@@ -6,7 +6,8 @@ class Spaceship extends Component{
     static propTypes={
         name: PropTypes.string,
         children: PropTypes.node.isRequired,
-        commanderType: PropTypes.node.isRequired
+        commanderType: PropTypes.node.isRequired,
+        onIncrement: PropTypes.func.isRequired,
     };
     
     // static defaultProps ={
@@ -18,6 +19,7 @@ class Spaceship extends Component{
         const {
             name, 
             children,
+            onIncrement,
             commanderType
         } = this.props;
 
@@ -34,6 +36,7 @@ class Spaceship extends Component{
         });
 
         return(
+            
             <div className='ship'>
                 <h1>{name}</h1>
                 {creaturesOnboard}
