@@ -45,11 +45,6 @@ const planets = (state=[], action)=>{
               ? { ...planet, crystals:  planet.crystals + action.howMany }
               : planet
             ));
-        case actions.TRANSFER_CRYSTALS:
-            return state.map( (planet)=>(
-                (action.planetId === planet.id)
-                ?{...planet, crystals: planet.crystals - action.howMany}: planet
-            ));
         default:
             return state;
     }

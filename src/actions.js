@@ -1,3 +1,42 @@
+let thingy={
+    location:{
+        planets:{
+            '52':{
+                id: 52,
+                name: 'Pluto',
+                resources:{
+                    crystals:1000
+                }
+            },
+            '54':{
+                id: 54,
+                name: 'Earth',
+                resources:{
+                    crystals:1000
+                }
+            },
+        },
+        ships: {
+            '1000':{
+                id: 1000,
+                name:'Enterprise',
+                resources:{
+                    cargo:500
+                }
+            }
+        }
+    },
+    crewMembers:{
+        '300':{
+            id: 300,
+            name: 'Leo',
+            rank: 'Capitan',
+            location: 52
+        }
+    }
+}
+
+
 // Tip #1: Make constatns for your action type strings
 /*
 
@@ -33,10 +72,26 @@ this is what we want to produce as an action object
     //reduce number of crystals
 }
 {
-    type: TRANSFER_CRYSTALS,
+  type: ADD_PLANET,
+  name: 'Earth',
+  id: 5432112345
+}
+{
+  type: REMOVE_CRYSTALS,
+  howMany: 1,
+  id: 1
+}
+{
+    type: REMOVE_RESOURCE,
+    resource: 'crystals',
     howMany: 1,
-    planetId: 1234,
-    shipId: 5678,
+    id: 1
+}
+{
+    type: ADD_RESOURCE,
+    resource: 'crystals',
+    howMany: 1,
+    id: 1
 }
 
 */
@@ -47,9 +102,9 @@ const ADD_SHIP = 'ADD_SHIP';
 const ADD_PLANET = 'ADD_PLANET';
 const MINE_CRYSTALS = 'MINE_CRYSTALS';
 const HOLD_LUAU = 'HOLD_LUAU';
-const TRANSFER_CRYSTALS = 'TRANSFER_CRYSTALS'
 const ADD_CRYSTALS = 'ADD_CRYSTALS';
 const REMOVE_CRYSTALS = 'REMOVE_CRYSTALS';
+
 export default{
     ADD_MEMBER,
     BEAM_MEMBER,
@@ -57,7 +112,6 @@ export default{
     ADD_PLANET,
     MINE_CRYSTALS,
     HOLD_LUAU,
-    TRANSFER_CRYSTALS,
     ADD_CRYSTALS,
     REMOVE_CRYSTALS,
 }
