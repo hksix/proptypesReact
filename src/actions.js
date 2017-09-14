@@ -32,6 +32,12 @@ this is what we want to produce as an action object
     id: 10
     //reduce number of crystals
 }
+{
+    type: TRANSFER_CRYSTALS,
+    howMany: 1,
+    planetId: 1234,
+    shipId: 5678,
+}
 
 */
 
@@ -41,6 +47,7 @@ const ADD_SHIP = 'ADD_SHIP';
 const ADD_PLANET = 'ADD_PLANET';
 const MINE_CRYSTALS = 'MINE_CRYSTALS';
 const HOLD_LUAU = 'HOLD_LUAU';
+const TRANSFER_CRYSTALS = 'TRANSFER_CRYSTALS'
 
 export default{
     ADD_MEMBER,
@@ -49,4 +56,5 @@ export default{
     ADD_PLANET,
     MINE_CRYSTALS,
     HOLD_LUAU,
+    TRANSFER_CRYSTALS
 }

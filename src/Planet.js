@@ -11,6 +11,12 @@ class Planet extends Component{
             alien: 0,
         })
     }
+    props(e){
+        e.preventDefault()
+        this.setState({
+            
+        })
+    }
 
     static propTypes = {
         name: PropTypes.string.isRequired,

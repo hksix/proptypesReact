@@ -17,7 +17,8 @@ const planets = (state=[], action)=>{
                     name: action.name,
                     classification: action.classification,
                     id: action.id,
-                    mines: action.mines
+                    mines: action.mines,
+                    crystals: 5,
                 }
             ]
         case actions.MINE_CRYSTALS:
@@ -32,6 +33,11 @@ const planets = (state=[], action)=>{
                     return mine
                 }
             })
+        case actions.TRANSFER_CRYSTALS:
+            return state.map( (planet)=>(
+                (action.planetId === planet.id)
+                ?{...planet, crystals: planet.crystals - action.howMany}: planet
+            ));
         default:
             return state;
     }
@@ -44,9 +50,15 @@ const ships =(state=[], action) =>{
                 ...state,
                 {
                     name: action.name,
-                    id: action.id
+                    id: action.id,
+                    crystals: 0
                 }
             ]
+        case actions.TRANSFER_CRYSTALS:
+            return state.map( (ship)=>(
+                (action.shipId === ship.id)
+                ?{...ship, crystals: ship.crystals - action.howMany}: ship
+            ));
         default:
             return state;
     }
