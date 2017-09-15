@@ -1,63 +1,170 @@
-// Tip #1: Make constatns for your action type strings
+import * as constants from './constants';
+
+let thingy = {
+  locations: {
+    planets: {
+      '52': {
+        id: 52,
+        name: 'Pluto',
+        resources: {
+          crystals: 1000
+        }
+      },
+      '54': {
+        id: 54,
+        name: 'Earth',
+        resources: {
+          crystals: 1000
+        }
+      },
+    },
+    ships: {
+      '1000': {
+        id: 1000,
+        name: 'Enterprise',
+        cargo: 500,
+        resources: {
+        }
+      }
+    }
+  },
+  crewMembers: {
+    '300': {
+      id: 300,
+      name: 'Leo',
+      rank: 'That big dude',
+      location: 52
+    }
+  }
+}
+
+
+
+
+
+// Tip #1: Make constants for your action type strings.
+
 /*
-
-this is what we want to produce as an action object
+This is what we want to produce as an action object:
 {
-    type: ADD_MEMBER,
-    name: 'Crusher',
-    rank: 'CEO',
-    id: 1234,
-    location: 'PLANET_THE_SUN'
-}
-
-{
-    type: BEAM_MEMBER,
-    id: 1234,
-    location: 'LOCATION_SHIP'
+  type: ADD_MEMBER,
+  name: 'crusher',
+  rank: 'chief medical officer',
+  id: 12345,
+  location: 54,
 }
 {
-    type: ADD_SHIP,
-    name: 'Enterprise',
-    id: 9890
+  type: BEAM_MEMBER,
+  id: 12345,
+  location: 1000,
 }
 {
-    type: ADD_PLANET,
-    name: 'EARTH',
-    classification: Barren,
-    ID: 10
-    mines: 10
+  type: ADD_LOCATION,
+  locationType: LOCATION_PLANET
+  name: 'Earth',
+  id: 5432112345
 }
 {
-    type:MINE_CRYSTALS,
-    id: 10
-    //reduce number of crystals
+  type: REMOVE_RESOURCE,
+  resource: 'crystals',
+  howMany: 1,
+  id: 1
 }
 {
-    type: TRANSFER_CRYSTALS,
-    howMany: 1,
-    planetId: 1234,
-    shipId: 5678,
+  type: ADD_RESOURCE,
+  resource: 'crystals',
+  howMany: 1,
+  id: 1
 }
-
 */
 
-const ADD_MEMBER = 'ADD_MEMBER';
-const BEAM_MEMBER = 'BEAM_MEMBER';
-const ADD_SHIP = 'ADD_SHIP';
-const ADD_PLANET = 'ADD_PLANET';
-const MINE_CRYSTALS = 'MINE_CRYSTALS';
-const HOLD_LUAU = 'HOLD_LUAU';
-const TRANSFER_CRYSTALS = 'TRANSFER_CRYSTALS'
-const ADD_CRYSTALS = 'ADD_CRYSTALS';
-const REMOVE_CRYSTALS = 'REMOVE_CRYSTALS';
-export default{
-    ADD_MEMBER,
-    BEAM_MEMBER,
-    ADD_SHIP,
-    ADD_PLANET,
-    MINE_CRYSTALS,
-    HOLD_LUAU,
-    TRANSFER_CRYSTALS,
-    ADD_CRYSTALS,
-    REMOVE_CRYSTALS,
+export const addMember = (name, rank, id, location) => {
+  return {
+    type: constants.ADD_MEMBER,
+    name: name,
+    rank: rank,
+    id: id,
+    location: location,
+  }
+};
+
+export const beamMember = (id, locationId) => {
+ return {
+    type: constants.BEAM_MEMBER,
+    id: id,
+    location: locationId,
+  }
+};
+
+export const addShip = (name, id, resources) => {
+  return {
+    type: constants.ADD_LOCATION,
+    locationType: constants.LOCATION_SHIP,
+    name: name,
+    id: id,
+    resources: resources
+  }
+};
+
+export const addPlanet = (name, id, resources) => {
+  return {
+    type: constants.ADD_LOCATION,
+    locationType: constants.LOCATION_PLANET,
+    name: name,
+    id: id,
+    resources: resources
+  }
+};
+
+export const removeResource = (resourceName, howMany, idToRemoveFrom) => {
+  return {
+    type: constants.REMOVE_RESOURCE,
+    resource: resourceName,
+    howMany: howMany,
+    id: idToRemoveFrom
+  }
+};
+
+export const addResource = (resourceName, howMany, idToAddTo) => {
+  return {
+    type: constants.ADD_RESOURCE,
+    resource: resourceName,
+    howMany: howMany,
+    id: idToAddTo
+  }
+};
+
+
+/*
+// EXAMPLES OF HOW TO USE. DO NOT PUT IN actions.js
+// JUST SHOWING ON SCREEN FOR DEMO ;P
+store.dispatch(addShip('Enterprise', 100, {}));
+// THIS GOES IN reducers.js
+const locations = (state={ planets: {}, ships: {}}, action) => {
+  switch (action.type) {
+    case ADD_LOCATION:
+      const newState = {...state};
+      if (action.locationType === LOCATION_SHIP) {
+        newState.ships[action.id] = {
+          id: action.id,
+          name: action.name,
+          resources: action.resources
+        }
+      } else {
+        newState.planets[action.id] = {
+          id: action.id,
+          name: action.name,
+          resources: action.resources
+        }
+      }
+      return newState;
+    default:
+      return state;
+  }
 }
+*/
+
+
+// export default {
+//   addMember,
+// }
