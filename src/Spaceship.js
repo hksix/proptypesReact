@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import CrewMember from './CrewMember.js'
 
 class Spaceship extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            name: ""
+        }
+    }
     static propTypes={
         name: PropTypes.string,
         children: PropTypes.node.isRequired,
         commanderType: PropTypes.node.isRequired,
-        onIncrement: PropTypes.func.isRequired,
     };
     
     // static defaultProps ={
@@ -20,7 +25,8 @@ class Spaceship extends Component{
             name, 
             children,
             onIncrement,
-            commanderType
+            commanderType,
+            clickHandler
         } = this.props;
 
         const creaturesOnboard = children.map((child, idx)=>{
@@ -40,6 +46,10 @@ class Spaceship extends Component{
             <div className='ship'>
                 <h1>{name}</h1>
                 {creaturesOnboard}
+                <button onClick={() =>{
+                    clickHandler}}>newShip
+            </button>
+        
             </div>
         );
     }

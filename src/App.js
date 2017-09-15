@@ -7,6 +7,7 @@ import Spaceship from './Spaceship.js';
 import CrewMember from './CrewMember.js';
 import BadAlien from './BadAlien.js'
 import Planet from './Planet.js'
+import LocationContainer from './LocationContainer'
 
 class App extends Component {
   render() {
@@ -22,23 +23,25 @@ class App extends Component {
           <BadAlien name='Kahn' species="Human?" />
         </Planet>
 
-      <Spaceship name='Enterprise' commanderType='CrewMember'>
+      <Spaceship name='Enterprise' commanderType='CrewMember'clickHandler={this._addman}>
         <CrewMember name="Riker" rank="Comander" location={LOCATIONS.TRANSPORTER_ROOM} />
         <CrewMember name="Wesley Crusher" rank="Ensign" location={LOCATIONS.TRANSPORTER_ROOM} />
         <CrewMember name="Picard" rank="El Captain" location={LOCATIONS.TRANSPORTER_ROOM} />
         <BadAlien name='Borger' species="Borg" location={LOCATIONS.UNKNOWN} />
       </Spaceship>
-        <button onClick={this._addMember}>Add Member</button>
+        <LocationContainer/>
       </div>
     );
   }
-  _addMember=()=>{ 
-      return(
-        <div>
-    <CrewMember name="Test" rank="NP" location={LOCATIONS.PLANET_EARTH}/>
-      </div>
-      )
-  }
-}
 
+  _addman=()=>{ 
+      let newMember = {name:'test'}
+      let newShip= Object.assign({},this.state.name, newMember)
+      this.setState({
+        name: newMember
+      })
+      console.log("hey")
+  }
+
+}
 export default App;

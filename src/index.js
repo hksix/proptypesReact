@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {Provider} from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 
 import { LOCATIONS } from './reducers';
+
 
 import * as actions from './actions';
 import * as constants from './constants';
@@ -13,11 +15,19 @@ import starTrekApp from './reducers';
 
 import { createStore } from 'redux';
 
+import _ from 'lodash';
+
+window._ = _;
+
+
 const store = createStore(starTrekApp, {});
+
+
 
 window.store = store;
 window.actions = actions;
 window.constants = constants;
+
 
 // store.dispatch({
 //   type: window.ADD_SHIP,
@@ -97,5 +107,9 @@ window.constants = constants;
 // window.transferCrystals = transferCrystals;
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+</Provider>,
+ document.getElementById('root'));
 registerServiceWorker();

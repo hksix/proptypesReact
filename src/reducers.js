@@ -1,12 +1,10 @@
+
+
 import { combineReducers } from 'redux';
 import * as actions from './actions';
 import * as constants from './constants';
 
-const defaultLocationsState = {
-  planets: {},
-  ships: {}
-};
-
+import _ from 'lodash';
 export const LOCATIONS = {
     TRANSPORTER_ROOM: 'TRANSPORTER_ROOM',
     PLANET_EARTH :'PLANET_EARTH',
@@ -14,10 +12,16 @@ export const LOCATIONS = {
     UNKNOWN: 'UNKNOWN'
 }
 
+const defaultLocationsState = {
+  planets: {},
+  ships: {}
+};
+
 const locations = (state=defaultLocationsState, action) => {
+  let newState;
   switch (action.type) {
     case constants.ADD_LOCATION:
-      let newState = {...state};
+      newState = {...state};
       if (action.locationType === constants.LOCATION_SHIP) {
         newState.ships[action.id] = {
           id: action.id,
@@ -33,15 +37,18 @@ const locations = (state=defaultLocationsState, action) => {
       }
       return newState;
     case constants.ADD_RESOURCE:
-        newState= {...state}
-      let locationThatIWantToChange;
-      for(let locationType in newState){
-          for(let location in locationType){
-              if (location.id === action.id){
-                  locationThatIWantToChange = location;
-              }
-          }
+      newState = {...state};
+      let arrayOfLocations = _.flatten(Object.keys(newState).map( loc => {
+        return [].concat(_.values(newState[loc]));
+      }))
+
+      let locationThatIWantToChange = arrayOfLocations.filter( loc => loc.id === action.id)[0]; // GIANT ASSumption
+
+      locationThatIWantToChange.resources = {
+        ...locationThatIWantToChange.resources,
+        [action.resource]:  locationThatIWantToChange.resources[action.resource] + action.howMany
       }
+      return newState;
     default:
       return state;
   }
