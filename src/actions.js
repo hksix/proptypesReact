@@ -1,4 +1,4 @@
-import * as constants from './constants';
+import * as constants from './Constants';
 
 let thingy = {
   locations: {
@@ -134,6 +134,14 @@ export const addResource = (resourceName, howMany, idToAddTo) => {
   }
 };
 
+export const showMenu =()=> {
+    var x = document.getElementById('Menu')
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
 
 /*
 // EXAMPLES OF HOW TO USE. DO NOT PUT IN actions.js

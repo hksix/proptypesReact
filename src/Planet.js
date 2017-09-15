@@ -11,12 +11,7 @@ class Planet extends Component{
             alien: 0,
         })
     }
-    props(e){
-        e.preventDefault()
-        this.setState({
-            
-        })
-    }
+
 
     static propTypes = {
         name: PropTypes.string.isRequired,
@@ -35,6 +30,18 @@ class Planet extends Component{
             classification,
             children
         } = this.props;
+
+        const checkIndividuals = () =>{
+            Object.keys({children}.children).map(key=>{
+                if (({children}.children[key].type.name) ==='CrewMember'){
+                    this.state.human += 1
+                }else{
+                    this.state.alien += 1
+                }
+            })
+            console.log({children}.children);
+        }
+        checkIndividuals()
 
         return(
             <div className="onPlanet">

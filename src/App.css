@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+.Menubutton{
+  
 }
 
 .App-logo {
@@ -9,13 +12,35 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 20px;
   padding: 20px;
-  color: white;
+  color: black;
 }
 
 .App-intro {
   font-size: large;
+}
+.trekpage{
+  display: flex;
+  /* padding-top: 1px; */
+}
+.alert-alert{
+  color: red;
+}
+
+.onPlanet{
+  width: 400px;
+  height: 50%;
+  text-align: center;
+  margin: 10px auto;
+  border: 2px solid green;
+}
+.ship{
+  width: 400px;
+  height: 50%;
+  text-align: center;
+  margin: 10px auto;
+  border: 3px dashed blueviolet;
 }
 
 
