@@ -2,7 +2,8 @@
 
 import { combineReducers } from 'redux';
 import * as actions from './actions';
-import * as constants from './constants';
+import * as constants from './Constants';
+import undoable, { distinctState} from 'redux-undo';
 
 import _ from 'lodash';
 export const LOCATIONS = {

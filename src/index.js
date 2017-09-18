@@ -9,7 +9,7 @@ import { LOCATIONS } from './reducers';
 
 
 import * as actions from './actions';
-import * as constants from './constants';
+import * as constants from './Constants';
 
 import starTrekApp from './reducers';
 
