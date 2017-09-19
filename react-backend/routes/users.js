@@ -4,20 +4,12 @@ const db = require('../db');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  db.query(`
-  select * from cd.members;`)
+  db.any(`
+  select * from cd.members where memid> 0;`)
   .then((results)=>{
-    results.forEach(function(result){
-      res.json([{
-        id: result.memid,
-        username: result.firstname
-    }])
-  })
-  // res.json([{
-  // 	id: 2,
-  // 	username: "Express redux -test 2"
-  // }]);
-});
+      console.log(results)
+      res.json(results)
+  });
 })
 
 module.exports = router;

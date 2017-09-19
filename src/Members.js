@@ -9,7 +9,6 @@ import UserForm from './UserForm.js';
 
 class Members extends Component{
     state = {users: []}
-    
       componentDidMount() {
         fetch('/users')
           .then(res => res.json())
@@ -20,7 +19,15 @@ class Members extends Component{
             <div>
             <h1>Users</h1>
             {this.state.users.map(user =>
-              <div key={user.id}>{user.username}</div>
+              <div key={user.memid}>
+                  <ul>
+                    <li>{user.firstname} {user.surname}</li>
+                    <li>Member ID: {user.memid}</li>
+                    <li>Address: {user.address}</li>
+                    <li>Zip-code: {user.zipcode}</li>
+                    <li>telephone: {user.Telephone}</li>
+                   </ul>
+                </div>
             )}
             <Provider store={store}>
                 <UserForm />
