@@ -16,17 +16,21 @@ import Planet from './Planet.js'
 import LocationContainer from './LocationContainer'
 import Sidebar from './Menu'
 import StarTrek from './StarTrek.js'
+import Memebers from './Members.js';
 
 class App extends Component {
+  
+  
   render() {
     return (
       
       <div className="App">
         <div className="App-header">
+      </div>
           <Sidebar/>
         </div>
         
-      </div>
+      
     );
   }
 

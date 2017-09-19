@@ -12,6 +12,7 @@ import * as actions from './actions';
 import * as constants from './Constants';
 
 import starTrekApp from './reducers';
+import Memebers from './Members.js';
 
 import { createStore } from 'redux';
 

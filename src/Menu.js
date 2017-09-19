@@ -6,6 +6,7 @@ import {
   } from 'react-router-dom'
   import {showMenu} from './actions'
   import StarTrek from './StarTrek.js'
+  import Memebers from './Members.js';
 
   const routes =[
       {path: '/',
@@ -13,10 +14,15 @@ import {
       sidebar: () =><div>Home</div>,
       main: () => <h2>Home page </h2>
     },
-      {path: '/events',
+      {path: '/startrek',
       exact: true,
-      sidebar: () =><div>Events</div>,
-      main: () => <h2>Events <StarTrek/></h2>
+      sidebar: () =><div>StarTrek</div>,
+      main: () => <h2>StarTrek <StarTrek/></h2>
+    },
+      {path: '/usersform',
+      exact: true,
+      sidebar: () =><div>Members</div>,
+      main: () => <h2>Members<Memebers/></h2>
     },
       {path: '/aboutus',
       exact: true,
@@ -46,7 +52,8 @@ import {
             }}>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
                 <li><Link to="/" onClick={showMenu}>Home</Link></li>
-                <li><Link to="/events" onClick={showMenu}>Events</Link></li>
+                <li><Link to="/startrek" onClick={showMenu}>StarTrek </Link></li>
+                <li><Link to="/usersform" onClick={showMenu}>Members</Link></li>
                 <li><Link to="/aboutus" onClick={showMenu}>About us</Link></li>
             </ul>
         </div>
