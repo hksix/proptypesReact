@@ -25,7 +25,8 @@ class Members extends Component{
                     <li>Member ID: {user.memid}</li>
                     <li>Address: {user.address}</li>
                     <li>Zip-code: {user.zipcode}</li>
-                    <li>telephone: {user.Telephone}</li>
+                    <li>Telephone: {user.telephone}</li>
+                    <li>Join Date: {user.joindate}</li>
                    </ul>
                 </div>
             )}

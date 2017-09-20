@@ -15,3 +15,4 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 
+// PORT=3001 node bin/www
